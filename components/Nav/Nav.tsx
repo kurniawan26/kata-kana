@@ -25,6 +25,11 @@ const components: { title: string; href: string; description: string }[] = [
     href: "/quiz",
     description: "Practice reading kana with a randomized quiz.",
   },
+  {
+    title: "Drawing Practice",
+    href: "/draw",
+    description: "Trace and practice writing kana characters by hand.",
+  },
 ]
 
 function Nav() {

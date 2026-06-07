@@ -2,15 +2,31 @@
 import { kanaDictionary } from '@/lib/kanaDictionary'
 import { Card } from '@/components/ui/card'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { playKanaAudio } from '@/lib/playKanaAudio'
+import { useRouter } from 'next/navigation'
 import React from 'react'
 
 type KanaType = keyof typeof kanaDictionary
 
 function CharacterCell({ char, romajis }: { char: string; romajis: string[] }) {
+  const router = useRouter()
+
   return (
-    <div className="flex flex-col items-center justify-center w-14 h-16 rounded-md border bg-card hover:bg-accent transition-colors cursor-default select-none">
-      <span className="text-2xl leading-none">{char}</span>
-      <span className="text-xs text-muted-foreground mt-1">{romajis[0]}</span>
+    <div
+      className="group relative flex flex-col items-center justify-center w-14 h-16 rounded-md border bg-card hover:bg-primary hover:border-primary transition-colors cursor-pointer select-none"
+      onClick={() => router.push(`/draw?char=${encodeURIComponent(char)}`)}
+      title={`Practice drawing ${char} (${romajis[0]})`}
+    >
+      <span className="text-2xl leading-none group-hover:text-primary-foreground">{char}</span>
+      <span className="text-xs text-muted-foreground mt-1 group-hover:text-primary-foreground/70">{romajis[0]}</span>
+      {/* Speaker button — stopPropagation so it doesn't trigger navigation */}
+      <button
+        onClick={e => { e.stopPropagation(); playKanaAudio(char) }}
+        className="absolute top-0.5 right-0.5 opacity-0 group-hover:opacity-100 transition-opacity p-0.5 rounded text-primary-foreground/60 hover:text-primary-foreground text-[11px] leading-none"
+        title="Play pronunciation"
+      >
+        🔊
+      </button>
     </div>
   )
 }

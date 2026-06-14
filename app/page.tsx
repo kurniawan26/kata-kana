@@ -3,7 +3,7 @@ import Link from 'next/link'
 export default function Home() {
   return (
     <main className="flex flex-1 items-center justify-center flex-col h-screen gap-3">
-      <h1 className="text-4xl font-bold text-center">Welcome To Kata-Kana</h1>
+      <h1 className="text-4xl font-bold text-center">Welcome To QKana</h1>
       <p className="text-center text-muted-foreground">Simple app to learn Japanese Hiragana & Katakana</p>
       <div className="flex gap-3 mt-2">
         <Link

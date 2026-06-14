@@ -161,7 +161,7 @@ function Game() {
             return (
               <div key={si} className={cn(
                 'flex items-center gap-3 p-3 rounded-lg border',
-                ratio >= 0.7 ? 'border-green-200 bg-green-50 dark:bg-green-950/20' : 'border-red-200 bg-red-50 dark:bg-red-950/20'
+                ratio >= 0.7 ? 'border-green-200 bg-green-50' : 'border-red-200 bg-red-50'
               )}>
                 <span className="text-sm font-medium w-16 shrink-0 text-muted-foreground">Step {si + 1}</span>
                 <div className="flex gap-1.5 flex-wrap flex-1">
@@ -170,7 +170,7 @@ function Game() {
                       key={ii}
                       className={cn(
                         'text-base px-1 rounded',
-                        s.correct[ii] ? 'text-green-700 dark:text-green-400' : 'text-red-600 dark:text-red-400'
+                        s.correct[ii] ? 'text-green-700' : 'text-red-600'
                       )}
                       title={s.correct[ii] ? s.answers[ii] : `${s.answers[ii]} → ${item.romajis[0]}`}
                     >
@@ -217,20 +217,20 @@ function Game() {
       </div>
 
       {/* Character grid */}
-      <div className="grid grid-cols-3 gap-3">
+      <div className="grid grid-cols-3 gap-2 md:gap-3">
         {stepItems.map((item, i) => {
           const isCorrect = stepSubmitted ? stepResults[i] : null
           return (
             <div
               key={i}
               className={cn(
-                'flex flex-col items-center gap-2 p-4 rounded-xl border transition-colors',
-                isCorrect === true  && 'border-green-400 bg-green-50 dark:bg-green-950/20',
-                isCorrect === false && 'border-red-400 bg-red-50 dark:bg-red-950/20',
+                'flex flex-col items-center gap-1.5 p-2 md:p-4 rounded-xl border transition-colors',
+                isCorrect === true  && 'border-green-400 bg-green-50',
+                isCorrect === false && 'border-red-400 bg-red-50',
                 isCorrect === null  && 'border-border bg-card'
               )}
             >
-              <span className="text-5xl leading-none select-none">{item.char}</span>
+              <span className="text-4xl md:text-5xl leading-none select-none">{item.char}</span>
               <Input
                 id={`quiz-input-${i}`}
                 ref={i === 0 ? firstInputRef : undefined}
@@ -253,7 +253,7 @@ function Game() {
                 autoCorrect="off"
               />
               {isCorrect === false && (
-                <p className="text-[11px] text-red-600 dark:text-red-400 text-center">
+                <p className="text-[11px] text-red-600 text-center">
                   {item.romajis.join(' / ')}
                 </p>
               )}

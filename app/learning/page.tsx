@@ -93,9 +93,9 @@ function LearningPage() {
 
         <Card className="p-4">
           <Tabs defaultValue="hiragana">
-            <TabsList>
-              <TabsTrigger value="hiragana">Hiragana (ひらがな)</TabsTrigger>
-              <TabsTrigger value="katakana">Katakana (カタカナ)</TabsTrigger>
+            <TabsList className="w-full">
+              <TabsTrigger value="hiragana" className="flex-1">Hiragana (ひらがな)</TabsTrigger>
+              <TabsTrigger value="katakana" className="flex-1">Katakana (カタカナ)</TabsTrigger>
             </TabsList>
             <TabsContent value="hiragana" className="mt-4">
               <KanaSection kanaType="hiragana" />

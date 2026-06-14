@@ -105,12 +105,12 @@ const DrawCanvas = forwardRef<DrawCanvasHandle, DrawCanvasProps>(function DrawCa
   }, [brushSize])
 
   return (
-    <div className="relative w-[320px] h-[320px] md:w-[360px] md:h-[360px] rounded-2xl border-2 border-dashed border-slate-200 bg-white overflow-hidden">
+    <div className="relative w-full max-w-[360px] aspect-square rounded-2xl border-2 border-dashed border-slate-200 bg-white overflow-hidden">
       {/* Faint guide character */}
       <div
         className="absolute inset-0 flex items-center justify-center pointer-events-none select-none"
         aria-hidden="true"
-        style={{ fontSize: 240, lineHeight: 1, opacity: 0.07 }}
+        style={{ fontSize: 'min(240px, 55vw)', lineHeight: 1, opacity: 0.07 }}
       >
         {guideChar}
       </div>

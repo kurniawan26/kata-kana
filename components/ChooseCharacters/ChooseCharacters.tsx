@@ -71,9 +71,9 @@ function ChooseCharacters() {
       </div>
 
       <Tabs defaultValue="hiragana">
-        <TabsList>
-          <TabsTrigger value="hiragana">Hiragana (ひらがな)</TabsTrigger>
-          <TabsTrigger value="katakana">Katakana (カタカナ)</TabsTrigger>
+        <TabsList className="w-full">
+          <TabsTrigger value="hiragana" className="flex-1">Hiragana</TabsTrigger>
+          <TabsTrigger value="katakana" className="flex-1">Katakana</TabsTrigger>
         </TabsList>
 
         {(['hiragana', 'katakana'] as KanaType[]).map(kanaType => (
